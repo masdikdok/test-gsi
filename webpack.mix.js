@@ -13,3 +13,7 @@ const mix = require('laravel-mix');
 
  mix.sass('resources/sass/app.scss', 'public/css')
      .js('resources/js/app.js', 'public/js/app.js');
+
+ mix.copy('node_modules/echarts/dist/echarts-en.min.js', 'public/js/echarts-en.min.js')
+     .copy('node_modules/echarts/dist/echarts-en.common.min.js', 'public/js/echarts-en.common.min.js')
+     .copy('node_modules/echarts/dist/echarts.min.js', 'public/js/echarts.min.js');

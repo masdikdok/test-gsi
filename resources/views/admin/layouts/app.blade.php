@@ -24,7 +24,7 @@
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
-                @include('layouts._sidebar')
+                @include('admin.layouts._sidebar')
             </div>
 
             <!-- top navigation -->

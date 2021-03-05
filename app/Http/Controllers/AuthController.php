@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\LoginController as DefaultLoginController;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 
 use App\Models\Login;
 use App\Models\Karyawan;
 use App\Components\Helpers;
 
-class AuthController extends DefaultLoginController
+class AuthController extends Controller
 {
+
     public function __construct(){
-        $this->middleware('guest:karyawan')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
     protected function loginFailed($errors){
@@ -24,8 +25,6 @@ class AuthController extends DefaultLoginController
     }
 
     public function login(Request $request){
-        dd(Auth::guard('karyawan')->karyawan());
-
         if($request->isMethod('post')){
             $this->validate($request, [
                 'username' => 'required|string',
@@ -40,9 +39,9 @@ class AuthController extends DefaultLoginController
                     ->get();
 
                 if ($login->count() == 1) {
-                    Auth::guard('karyawan')->login($karyawan);
+                    $request->session()->put('credentials', $karyawan);
 
-                    return redirect()->route('karyawan');
+                    return redirect()->route('admin.dashboard');
                 }elseif ($login->count() > 1) {
                     // error
                     return $this->loginFailed([
@@ -65,14 +64,12 @@ class AuthController extends DefaultLoginController
     }
 
     public function logout(Request $request){
-        $name = auth()->user()->name;
-
-        $this->guard()->logout();
+        $nama = $request->session()->get('credentials')->nama;
         $request->session()->invalidate();
 
         Helpers::setAlert([
             'type' => 'info',
-            'message' => 'See you later ' . $name
+            'message' => 'See you later ' . $nama
         ]);
 
         return redirect('/');
