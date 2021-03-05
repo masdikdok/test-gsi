@@ -152,7 +152,7 @@ class ProduksiController extends Controller
             $output['alert']['message'] = 'Hapus data gagal!';
         }
 
-        if ($request->isAjaxRequest()) {
+        if ($request->ajax()) {
             return response()->json($output);
         }
 

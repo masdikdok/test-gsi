@@ -32,7 +32,7 @@ class DashboardController extends Controller
         $output['alert']['type'] = 'success';
         $output['alert']['message'] = 'Get data chart produksi is success!';
         $output['model'] = [
-            'title' => 'Transaction Produksi By Achivement',
+            'title' => 'Report Achivement Berdasarkan Volume Transaksi Produksi',
             'subtitle' => 'Periode ' . $filter_date['valid_from'] . ' - ' . $filter_date['valid_until'],
             'periode' => $filter_date['valid_from'] . ' - ' . $filter_date['valid_until'],
             'data' => []
@@ -93,7 +93,7 @@ class DashboardController extends Controller
         $output['alert']['type'] = 'success';
         $output['alert']['message'] = 'Get data chart best lokasi is success!';
         $output['model'] = [
-            'title' => 'Best Lokasi Based on Transaksi Produksi',
+            'title' => 'Lokasi Terbaik Berdasarkan Volume Transaksi Produksi',
             'subtitle' => 'Periode ' . $filter_date['valid_from'] . ' - ' . $filter_date['valid_until'],
             'periode' => $filter_date['valid_from'] . ' - ' . $filter_date['valid_until'],
             'data' => []
@@ -130,7 +130,7 @@ class DashboardController extends Controller
         $output['alert']['type'] = 'success';
         $output['alert']['message'] = 'Get data chart best item is success!';
         $output['model'] = [
-            'title' => 'Best Item Based on Transaksi Produksi',
+            'title' => 'Item Terbaik Berdasarkan Volume Transaksi Produksi',
             'subtitle' => 'Periode ' . $filter_date['valid_from'] . ' - ' . $filter_date['valid_until'],
             'periode' => $filter_date['valid_from'] . ' - ' . $filter_date['valid_until'],
             'data' => []

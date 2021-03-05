@@ -3,7 +3,7 @@
         <div class="form-group row">
             <label for="" class="control-label col-md-4">Tanggal</label>
             <div class="col-md-8">
-                <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" placeholder="Tanggal" value="@if(isset($produksi)){{date('Y-m-d', strtotime($produksi->tanggal_transaksi))}}@else{{ date('Y-m-d')}}@endif" required>
+                <input type="datetime-local" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" placeholder="Tanggal" value="@if(isset($produksi)){{date('Y-m-d', strtotime($produksi->tanggal_transaksi))}}@else{{ date('Y-m-d')}}@endif" required>
 
                 @error('tanggal')
                     <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                 <select name="item" id="item" class="form-control @error('item') is-invalid @enderror" required>
                     <option value="" disabled>-- pilih --</option>
                     @foreach ($list_item as $key => $item)
-                        @if ($produksi->kode == $item->kode)
+                        @if ((isset($produksi)) && $produksi->kode == $item->kode)
                             <option value="{{ $item->kode }}" selected>{{ $item->nama }}</option>
                         @else
                             <option value="{{ $item->kode }}">{{ $item->nama }}</option>

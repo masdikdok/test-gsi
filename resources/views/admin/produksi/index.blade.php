@@ -67,7 +67,7 @@
                     <br>
 
                     <div class="table-responsive">
-                        <table class="table stripe" id="table-series">
+                        <table class="table stripe" id="table-produksi">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -88,20 +88,20 @@
                                     @endphp
                                     @foreach ($produksi as $key => $item)
                                         <tr>
-                                            <td>{{ $nomer++ }}</td>
-                                            <td>{{ date('Y-M-d', strtotime($item->tanggal_transaksi)) }}</td>
-                                            <td>{{ $item->item_kode }}</td>
-                                            <td>{{ $item->item_nama }}</td>
-                                            <td>{{ $item->lokasi_kode }}</td>
-                                            <td>{{ $item->lokasi_nama }}</td>
-                                            <td>{{ $item->qty_actual }}</td>
-                                            <td>{{ $item->karyawan_nama }}</td>
+                                            <td class="align-middle">{{ $nomer++ }}</td>
+                                            <td class="align-middle">{{ date('Y-M-d', strtotime($item->tanggal_transaksi)) }}</td>
+                                            <td class="align-middle">{{ $item->item_kode }}</td>
+                                            <td class="align-middle">{{ $item->item_nama }}</td>
+                                            <td class="align-middle">{{ $item->lokasi_kode }}</td>
+                                            <td class="align-middle">{{ $item->lokasi_nama }}</td>
+                                            <td class="align-middle">{{ $item->qty_actual }}</td>
+                                            <td class="align-middle">{{ $item->karyawan_nama }}</td>
                                             <td class="text-center flex flex-gap-4">
-                                                <a href="{{ route('admin.produksi.edit', ['id' => $item->id])}}" class="btn btn-primary">
+                                                <a href="{{ route('admin.produksi.edit', ['id' => $item->id])}}" class="btn btn-primary p-3">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
 
-                                                <button class="btn btn-danger btn-hapus-produksi" type="button">
+                                                <button class="btn btn-danger btn-hapus-produksi p-3 text-white" type="button">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
 
